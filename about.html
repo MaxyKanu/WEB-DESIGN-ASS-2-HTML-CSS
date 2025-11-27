@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Football Agency Sierra Leone - Our history, mission, vision and partner clubs">
+    <title>About Us - Football Agency Sierra Leone</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ===== ABOUT PAGE SPECIFIC STYLES ===== */
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(30, 58, 138, 0.9) 100%),
+                        url('./IMAGES/hero.jpg') center/cover no-repeat;
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Mission Vision Grid */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mv-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mv-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .mv-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+       /* ===== SINGLE LEARN MORE BUTTON ===== */
+.learn-more-single {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.learn-more-single:hover {
+    background: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
+}
+        
+       
+     /* Club Cards Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 180px;
+            background: var(--background-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            padding: 1rem;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+        }
+        
+        .team-role {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+        <img class="agent-logo" src="./IMAGES/logo.jpg" alt="">   
+            <a href="index.html" class="logo">Sierra Leone Football Agency</a>
+            <ul class="nav-links">
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="players.html">PLAYERS</a></li>
+                <li><a href="matches.html">MATCHES</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="page-header">
+        <div class="container">
+            <h1>ABOUT SIERRA LEONE FOOTBALL AGENCY </h1>
+            <p>Pioneering football talent management and player development in Sierra Leone since 2015</p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <!-- Introduction Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Leading the Future of Sierra Leone Football</h2>
+                    <p class="container" style="max-width: 800px; margin: 1rem auto 3rem;">
+                        Football Agency Sierra Leone is the premier talent management organization dedicated to 
+                        discovering, nurturing, and promoting exceptional football talent from across Sierra Leone. 
+                        We bridge the gap between local potential and global opportunities.
+                    </p>
+                </div>
+
+                <!-- History, Mission, Vision Section -->
+<section class="section">
+    <div class="container">
+        <div class="text-center">
+           
+        </div>
+
+        <!-- History, Mission, Vision Grid -->
+        <div class="mv-grid">
+            <!-- History -->
+            <div class="mv-card">
+                <div class="mv-icon">📜</div>
+                <h3>HISTORY</h3>
+                <p>Founded in 2015, we started with a vision to professionalize football talent management in Sierra Leone. From our first office in Freetown to becoming the nation's leading agency...</p>
+            </div>
+            
+            <!-- Mission -->
+            <div class="mv-card">
+                <div class="mv-icon">🎯</div>
+                <h3>MISSION</h3>
+                <p>To identify, develop, and position Sierra Leonean football talent for successful professional careers through comprehensive management and strategic international partnerships.</p>
+            </div>
+            
+            <!-- Vision -->
+            <div class="mv-card">
+                <div class="mv-icon">🔭</div>
+                <h3>VISION</h3>
+                <p>To become West Africa's leading football agency, transforming raw talent into world-class professionals and elevating Sierra Leone's presence in global football.</p>
+            </div>
+        </div>
+
+        <!-- Single Learn More Button -->
+        <div class="text-center" style="margin-top: 3rem;">
+            <button class="btn learn-more-single">LEARN MORE ABOUT US</button>
+        </div>
+    </div>
+</section>
+
+        
+        <!-- Partner Clubs Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center">FIND OUT ABOUT TEAMS</h2>
+                <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+                    We partner with and manage some of Sierra Leone's most promising football clubs, 
+                    providing professional management and development opportunities.
+                </p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="./IMAGES/kallon.webp" alt="FC Kallon Logo">
+                        </div>
+                        <div class="team-info">
+                            <h4>FC KALLON</h4>
+                            <div class="team-role">Premier League Club</div>
+                            <p>One of Sierra Leone's most successful clubs with multiple league titles and continental experience.</p>
+                           
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="./IMAGES/eastern.webp" alt="East End Lions Logo">
+                        </div>
+                        <div class="team-info">
+                            <h4>EAST END LIONS</h4>
+                            <div class="team-role">Premier League Club</div>
+                            <p>Historic club with strong youth development program and passionate fan base.</p>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="./IMAGES/bo.webp" alt="Bo Rangers Logo">
+                        </div>
+                        <div class="team-info">
+                            <h4>BO RANGERS</h4>
+                            <div class="team-role">Premier League Club</div>
+                            <p>Recent champions known for their attacking style and strong community roots.</p>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary">LEARN MORE ABOUT TEAMS</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+            <p>&copy; 2025 Football Agency Sierra Leone. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

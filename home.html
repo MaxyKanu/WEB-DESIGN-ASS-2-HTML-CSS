@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Football Agency Sierra Leone - Managing and promoting Sierra Leone's finest football talent">
+    <title>Football Agency Sierra Leone - Home</title>
+    <!-- EXTERNAL CSS - For all pages -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- INTERNAL CSS - Home page specific styles only -->
+    <style>
+        /* ===== CRISP HERO SECTION ===== */
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(46, 139, 87, 0.85) 0%, rgba(30, 58, 138, 0.85) 100%),
+                url('./IMAGES/hero.jpg') center/cover no-repeat;
+            color: var(--white);
+            padding: 6rem 1rem;
+            text-align: center;
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ===== SECTION SPACING ===== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-dark {
+            background: #f8f9fa;
+        }
+
+        /* ==ADDITONAL ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #2e8b57, #1e3a8a);
+            border-radius: 2px;
+        }
+
+        .about-heading {
+            font-size: 2.8rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: left;
+            
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            display: block;
+        }
+
+        .highlight-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-learn-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #2e8b57, #1e3a8a);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+        }
+
+        .btn-learn-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
+        }
+
+        /* ===== NEWS SECTION -  ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #2e8b57;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: #2e8b57;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            color: #555;
+            line-height: 1.6;
+        }
+
+     
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .scores-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .team-logo {
+        width: 35px;
+        height: 35px;
+    }
+}
+        /* ===== HIGHLIGHTS SECTION ===== */
+.highlights-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.featured-highlight {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== FIXED IMAGE CONTAINMENT ===== */
+.featured-video, 
+.highlight-video {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.featured-video img, 
+.highlight-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.featured-video {
+    height: 300px;
+    background: linear-gradient(45deg, #1e3a8a, #2e8b57);
+}
+
+.highlight-video {
+    height: 160px;
+    background: #333;
+}
+
+.featured-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-badge {
+    background: #dc2626;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.featured-title {
+    font-size: 1.5rem;
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.featured-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ===== ADDITIONAL HIGHLIGHTS GRID ===== */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-card:hover {
+    transform: translateY(-3px);
+}
+
+.highlight-content {
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-badge {
+    background: #2e8b57;
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.highlight-title {
+    font-size: 1rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.highlight-meta {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #2e8b57;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.sidebar-meta {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-desc {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.interview-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.interview-title {
+    font-size: 1.1rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.interview-meta {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .highlights-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-video {
+        height: 250px;
+    }
+    
+    .highlight-video {
+        height: 140px;
+    }
+}
+
+        /* ===== BUTTON STYLES ===== */
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #1e3a8a;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #2e8b57;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .highlights-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-heading {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .scores-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+             <img class="agent-logo" src="./IMAGES/logo.jpg" alt="">
+            <a href="index.html" class="logo">Sierra Leone Football Agency</a>
+            <ul class="nav-links">
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="players.html">PLAYERS</a></li>
+                <li><a href="matches.html">MATCHES</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <header class="hero">
+        <div class="container">
+            <h1>CONNECTING AND DISCOVERING SIERRA LEONE BEST TALENT</h1>
+            <p>Sierra Leone football agency dedicated to nurturing, developing, and promoting Sierra Leone's exceptional football talent to global platforms.</p>
+        </div>
+    </header>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="section about-section">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2 class="about-heading">ABOUT </h2>
+                
+                <p class="about-text">
+                    Sierra Leone Football Agency stands as the nation's premier talent management organization, committed to revolutionizing football development in West Africa. We serve as the crucial bridge connecting Sierra Leone's exceptional football talent with international opportunities.
+                </p>
+                
+                <p class="about-text">
+                    Our comprehensive approach encompasses talent identification, professional development, career management, and international placement. We work closely with local clubs, academies, and communities to ensure no potential goes unnoticed or underdeveloped.
+                    With strategic partnerships across European, Asian, and African leagues, we provide unparalleled access to global football markets while maintaining our core mission: elevating Sierra Leonean football to world-class standards and creating sustainable career pathways for our athletes.
+                </p>   
+                 
+            </div>
+            
+            <a href="about.html" class="btn-learn-more">LEARN MORE ABOUT US</a>
+        </div>
+    </section>
+
+    
+    <!-- ===== NEWS SECTION ===== -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">LATEST NEWS</h2>
+            <div class="news-grid">
+                
+                <article class="news-card">
+                    <div class="news-image"><img src="./IMAGES/training.jpeg" alt=""></div>
+                    <div class="news-content">
+                        <span class="news-category">NATIONAL TEAM</span>
+                        <div class="news-date">December 15, 2024</div>
+                        <h3 class="news-title">Leone Stars Begin Intensive Preparations for AFCON Qualifiers</h3>
+                        <p class="news-excerpt">Sierra Leone national team commences two-week training camp with focus on tactical development.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image"><img src="./IMAGES/acamedy.jpeg" alt=""></div>
+                    <div class="news-content">
+                        <span class="news-category">DEVELOPMENT</span>
+                        <div class="news-date">December 12, 2024</div>
+                        <h3 class="news-title">New Football Academy Launched in Freetown</h3>
+                        <p class="news-excerpt">State-of-the-art youth development facility opens in the capital.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image"><img src="./IMAGES/contract sign.jpeg" alt=""></div>
+                    <div class="news-content">
+                        <span class="news-category">TRANSFERS</span>
+                        <div class="news-date">December 10, 2024</div>
+                        <h3 class="news-title">Sierra Leone Midfielder Secures European Contract</h3>
+                        <p class="news-excerpt">Promising central midfielder signs three-year deal with Portuguese club.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="btn-container">
+                <a href="news.html" class="btn-primary">View More News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====  HIGHLIGHTS SECTION ===== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">LATEST HIGHLIGHTS </h2>
+            
+            <div class="highlights-container">
+                <!-- Main Highlights Area -->
+                <div>
+                    <!-- Featured Highlight -->
+                    <div class="featured-highlight">
+                        <div class="featured-video"><img src="./IMAGES/bo vs east.jpg" alt=""></div>
+                        <div class="featured-content">
+                            <span class="featured-badge">MATCH HIGHLIGHTS</span>
+                            <h3 class="featured-title">East End Lions 2-1 Bo Rangers: Dramatic Late Winner Shakes Title Race</h3>
+                            <div class="featured-meta">
+                                <span>Premier League • Dec 14, 2024</span>
+                                <span>Attendance: 15,247</span>
+                            </div>
+                            <p>Thrilling encounter sees Lions maintain top spot with dramatic 89th-minute winner. Captain Alimamy Turay's brace secures crucial three points in title challenge.</p>
+                        </div>
+                    </div>
+
+                    <!-- Additional Highlights Grid -->
+                    <div class="highlights-grid">
+                        <!-- Highlight 1 -->
+                        <div class="highlight-card">
+                            <div class="highlight-video"><img src="./IMAGES/diamond vs old.jpeg" alt=""></div>
+                            <div class="highlight-content">
+                                <span class="highlight-badge">HIGHLIGHTS</span>
+                                <h4 class="highlight-title">Diamond Stars Dominate Old Edwardians</h4>
+                                <div class="highlight-meta">Premier League • Dec 13, 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlight 2 -->
+                        <div class="highlight-card">
+                            <div class="highlight-video"><img src="./IMAGES/blackpool vs kallon.jpeg" alt=""></div>
+                            <div class="highlight-content">
+                                <span class="highlight-badge">HIGHLIGHTS</span>
+                                <h4 class="highlight-title">Mighty Blackpool vs FC Kallon: Derby Thriller</h4>
+                                <div class="highlight-meta">Premier League • Dec 12, 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlight 3 -->
+                        <div class="highlight-card">
+                            <div class="highlight-video"><img src="./IMAGES/central vs port.jpeg" alt=""></div>
+                            <div class="highlight-content">
+                                <span class="highlight-badge">HIGHLIGHTS</span>
+                                <h4 class="highlight-title">Ports Authority Hold Central Parade in Stalemate</h4>
+                                <div class="highlight-meta">Premier League • Dec 11, 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlight 3 -->
+                        <div class="highlight-card">
+                            <div class="highlight-video"><img src="./IMAGES/egypt vs sl.jpeg" alt=""></div>
+                            <div class="highlight-content">
+                                <span class="highlight-badge">HIGHLIGHTS</span>
+                                <h4 class="highlight-title">Leone Star Defeated by a Strong Egypt Team</h4>
+                                <div class="highlight-meta">AFCON Qualifiers • March 20, 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="highlight-sidebar">
+                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">Match Previews</h3>
+                    
+                    <div class="sidebar-item">
+                        <h4 class="sidebar-title">Mighty Blackpool vs FC Kallon</h4>
+                        <div class="sidebar-meta">Premier League • Tomorrow • 16:00 GMT</div>
+                        <p class="sidebar-desc">Traditional rivals clash in Freetown derby. Both teams seeking momentum.</p>
+                    </div>
+
+                    <div class="sidebar-item">
+                        <h4 class="sidebar-title">Diamond Stars vs Old Edwardians</h4>
+                        <div class="sidebar-meta">Premier League • Dec 18 • 15:30 GMT</div>
+                        <p class="sidebar-desc">Mid-table battle with both sides looking to climb positions.</p>
+                    </div>
+
+                    <h3 style="color: #1e3a8a; margin: 1.5rem 0 1rem;">Post-Match Interviews</h3>
+                    
+                    <div class="interview-item">
+                        <h4 class="interview-title">Coach John Keister: "We're Building Something Special"</h4>
+                        <div class="interview-meta">Leone Stars Coach • Post-Training Interview</div>
+                        <p class="sidebar-desc">National team coach discusses AFCON preparations and youth development.</p>
+                    </div>
+
+                    <div class="interview-item">
+                        <h4 class="interview-title">Alhaji Kamara: "The Fans Deserved That Win"</h4>
+                        <div class="interview-meta">East End Lions Striker • Post-Match Reaction</div>
+                        <p class="sidebar-desc">Match-winner shares thoughts on dramatic victory and title ambitions.</p>
+                    </div>
+
+                     <div class="interview-item">
+                        <h4 class="interview-title">Coach Mohamed Kallon: "The boys are ready to give thier all"</h4>
+                        <div class="interview-meta">Leone Stars Coach • Post-Training Interview</div>
+                        <p class="sidebar-desc">National team coach discusses Friendly match preparations against Guinea</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <a href="highlights.html" class="btn-primary">VIEW MORE HIGHLIGHTS</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Football Agency Sierra Leone. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

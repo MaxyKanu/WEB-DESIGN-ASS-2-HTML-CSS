@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fixtures, Results & Statistics - Football Agency Sierra Leone">
+    <title>Matches & Statistics - Football Agency Sierra Leone</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ===== ENHANCED MATCHES PAGE STYLES ===== */
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(30, 58, 138, 0.9) 100%),
+                        url('./IMAGES/HERO\ 3.jpg') center/cover no-repeat;
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        
+        
+        /* Matches Container */
+        .matches-container {
+            display: none;
+        }
+        
+        .matches-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* SECTION STRUCTURES */
+        .fixtures-section, .results-section, .stats-section {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Matchweek and Results Groups */
+        .matchweek-group, .results-group {
+            margin-bottom: 3rem;
+            background: var(--background-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .matchweek-title, .results-period {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .matchweek-dates {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        /* Match Cards */
+        .match-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .match-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .match-card.fixture {
+            border-left-color: var(--secondary-color);
+        }
+        
+        .match-card.result {
+            border-left-color: var(--primary-color);
+        }
+        
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .team.home {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        
+        .team.away {
+            justify-content: flex-start;
+            text-align: left;
+        }
+        
+        .team-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Enhanced Team Info */
+        .team-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .team-form {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .team-scorers {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .scorer {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            background: var(--background-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .match-details {
+            text-align: center;
+        }
+        
+        .match-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .match-time {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced Match Score */
+        .match-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            justify-content: center;
+        }
+
+        .score {
+            padding: 0.5rem 1rem;
+            background: var(--background-light);
+            border-radius: 5px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .score-separator {
+            color: var(--text-light);
+        }
+        
+        .match-venue {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced Match Details */
+        .match-referee, .match-attendance {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+        
+        .match-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        .status-upcoming {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+        
+        .status-live {
+            background: var(--accent-color);
+            color: var(--white);
+            animation: pulse 2s infinite;
+        }
+        
+        .status-completed {
+            background: var(--text-light);
+            color: var(--white);
+        }
+        
+        /* Match Filters */
+        .matches-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--white);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+   
+        
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+        <img class="agent-logo" src="./IMAGES/logo.jpg" alt="">
+            <a href="index.html" class="logo">Sierra Leone Football Agency </a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="players.html">PLAYERS</a></li>
+                <li><a href="matches.html">MATCHES</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="page-header">
+        <div class="container">
+            <h1>MATCHES & STATISTICS</h1>
+            <p>Complete coverage of Sierra Leone Premier League - Fixtures, Results & Player Stats</p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <section class="section">
+            <div class="container">
+               
+
+                <!-- ===== FIXTURES SECTION ===== -->
+                <div class="matches-container active" id="fixtures-container">
+                    <section class="fixtures-section">
+                        <div class="section-header">
+                            <h2>📅 UPCOMING FIXTURES</h2>
+                            <p>Sierra Leone Premier League 2025/26 Season - Matchweek 1</p>
+                        </div>
+
+                        <!-- Matchweek 1 -->
+                        <div class="matchweek-group">
+                            <h3 class="matchweek-title">MATCH WEEK 1 </h3>
+                            <span class="matchweek-dates">November 15-17, 2025</span>
+                            
+                            <!-- Match 1 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">BR</div>
+                                    <div class="team-info">
+                                        <div class="team-name">BO RANGERS</div>
+                                        <div class="team-form">Champions</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Saturday, November 15, 2025</div>
+                                    <div class="match-time">16:00 GMT</div>
+                                    <div class="match-venue">📍 Bo Stadium, Bo City</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: A. Bangura</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Wilberforce Strikers</div>
+                                        <div class="team-form">Newly Promoted</div>
+                                    </div>
+                                      <div class="team-logo">WS</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 2 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">EEL</div>
+                                    <div class="team-info">
+                                        <div class="team-name">East End Lions</div>
+                                        <div class="team-form">2nd Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Saturday, November 15, 2025</div>
+                                    <div class="match-time">15:30 GMT</div>
+                                    <div class="match-venue">📍 National Stadium, Freetown</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: S. Koroma</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">FC Kallon</div>
+                                        <div class="team-form">3rd Position</div>
+                                    </div>
+                                    <div class="team-logo">FCL</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 3 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">MB</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Mighty Blackpool</div>
+                                        <div class="team-form">4th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Sunday, November 16, 2025</div>
+                                    <div class="match-time">17:00 GMT</div>
+                                    <div class="match-venue">📍 Brookfields Stadium</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: M. Sesay</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Kamboi Eagles</div>
+                                        <div class="team-form">5th Position</div>
+                                    </div>
+                                    <div class="team-logo">KE</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 4 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">WUS</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Wusum Stars</div>
+                                        <div class="team-form">6th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Sunday, November 16, 2025</div>
+                                    <div class="match-time">15:30 GMT</div>
+                                    <div class="match-venue">📍 Wusum Stadium, Makeni</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: P. Conteh</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Diamond Stars</div>
+                                        <div class="team-form">7th Position</div>
+                                    </div>
+                                    <div class="team-logo">DIA</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 5 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">FTC</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Freetown City</div>
+                                        <div class="team-form">8th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Sunday, November 16, 2025</div>
+                                    <div class="match-time">16:00 GMT</div>
+                                    <div class="match-venue">📍 SLFA Academy</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: J. Kamara</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Bhantal FC</div>
+                                        <div class="team-form">9th Position</div>
+                                    </div>
+                                    <div class="team-logo">BHA</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 6 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">AC</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Abacha City</div>
+                                        <div class="team-form">10th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Monday, November 17, 2025</div>
+                                    <div class="match-time">15:30 GMT</div>
+                                    <div class="match-venue">📍 Abacha Stadium</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: L. Turay</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Bai Bureh Warriors</div>
+                                        <div class="team-form">11th Position</div>
+                                    </div>
+                                    <div class="team-logo">BBW</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 7 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">LUA</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Luawa FC</div>
+                                        <div class="team-form">12th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Monday, November 17, 2025</div>
+                                    <div class="match-time">16:00 GMT</div>
+                                    <div class="match-venue">📍 Kenema Field</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: S. Bangura</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Old Edwardians</div>
+                                        <div class="team-form">13th Position</div>
+                                    </div>
+                                    <div class="team-logo">OE</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 8 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">BS</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Bullom Stars</div>
+                                        <div class="team-form">14th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Monday, November 17, 2025</div>
+                                    <div class="match-time">17:00 GMT</div>
+                                    <div class="match-venue">📍 Bonthe Stadium</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: M. Koroma</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Ports Authority</div>
+                                        <div class="team-form">15th Position</div>
+                                    </div>
+                                    <div class="team-logo">PA</div>
+                                </div>
+                            </div>
+
+                            <!-- Match 9 -->
+                            <div class="match-card fixture">
+                                <div class="team away">
+                                    <div class="team-logo">SLIFA</div>
+                                    <div class="team-info">
+                                        <div class="team-name">SLIFA Mount Aureol</div>
+                                        <div class="team-form">16th Position</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Monday, November 17, 2025</div>
+                                    <div class="match-time">16:30 GMT</div>
+                                    <div class="match-venue">📍 Mount Aureol Ground</div>
+                                    <div class="match-status status-upcoming">Upcoming</div>
+                                    <div class="match-referee">Referee: A. Conteh</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Star Sport Academy</div>
+                                        <div class="team-form">17th Position</div>
+                                    </div>
+                                    <div class="team-logo">SSA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ===== RESULTS SECTION ===== -->
+                <div class="matches-container" id="results-container">
+                    <section class="results-section">
+                        <div class="section-header">
+                            <h2>🏆 Recent Results</h2>
+                            <p>Sierra Leone Premier League 2025/26 Season - Previous Matches</p>
+                        </div>
+
+                        <!-- October Results -->
+                        <div class="results-group">
+                            <h3 class="results-period">October 2025</h3>
+                            
+                            <!-- Result 1 -->
+                            <div class="match-card result">
+                                <div class="team away">
+                                    <div class="team-logo">BR</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Bo Rangers</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">J. Bangura 25', 67'</span>
+                                            <span class="scorer">A. Turay 89'</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Saturday, October 25, 2025</div>
+                                    <div class="match-score">
+                                        <span class="score">3</span>
+                                        <span class="score-separator">-</span>
+                                        <span class="score">1</span>
+                                    </div>
+                                    <div class="match-venue">📍 Bo Stadium, Bo City</div>
+                                    <div class="match-status status-completed">Full Time</div>
+                                    <div class="match-attendance">Attendance: 4,200</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">East End Lions</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">M. Kamara 55'</span>
+                                        </div>
+                                    </div>
+                                    <div class="team-logo">EEL</div>
+                                </div>
+                            </div>
+
+                            <!-- Result 2 -->
+                            <div class="match-card result">
+                                <div class="team away">
+                                    <div class="team-logo">FCL</div>
+                                    <div class="team-info">
+                                        <div class="team-name">FC Kallon</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">S. Conteh 12'</span>
+                                            <span class="scorer">I. Sesay 78'</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Sunday, October 26, 2025</div>
+                                    <div class="match-score">
+                                        <span class="score">2</span>
+                                        <span class="score-separator">-</span>
+                                        <span class="score">0</span>
+                                    </div>
+                                    <div class="match-venue">📍 SLFA Academy, Freetown</div>
+                                    <div class="match-status status-completed">Full Time</div>
+                                    <div class="match-attendance">Attendance: 2,800</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Mighty Blackpool</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="team-logo">MB</div>
+                                </div>
+                            </div>
+
+                            <!-- Result 3 -->
+                            <div class="match-card result">
+                                <div class="team away">
+                                    <div class="team-logo">KE</div>
+                                    <div class="team-info">
+                                        <div class="team-name">Kamboi Eagles</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">P. Koroma 34'</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details">
+                                    <div class="match-date">Saturday, October 18, 2025</div>
+                                    <div class="match-score">
+                                        <span class="score">1</span>
+                                        <span class="score-separator">-</span>
+                                        <span class="score">1</span>
+                                    </div>
+                                    <div class="match-venue">📍 Kenema Field</div>
+                                    <div class="match-status status-completed">Full Time</div>
+                                    <div class="match-attendance">Attendance: 1,950</div>
+                                </div>
+                                
+                                <div class="team home">
+                                    <div class="team-info">
+                                        <div class="team-name">Wusum Stars</div>
+                                        <div class="team-scorers">
+                                            <span class="scorer">A. Bangura 72'</span>
+                                        </div>
+                                    </div>
+                                    <div class="team-logo">WUS</div>
+                                </div>
+                            </div>
+
+                            
+                    </section>
+               
+                
+                                      
+
+                    
+                                    
+                                            
+
+                       
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+       
+          <p>&copy; 2025 Football Agency Sierra Leone. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

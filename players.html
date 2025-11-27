@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sierra Leone Football Agency Player Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+         /* ===== HOME PAGE PLAYERS GRID ===== */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .player-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .player-image {
+            width: 100%;
+            height: 300px;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            overflow: hidden;
+        }
+
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        
+        .player-info {
+            padding: 1.5rem;
+        }
+
+        /* ===== ENHANCED PLAYER PROFILES ===== */
+.player-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.player-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.player-image {
+    width: 100%;
+    height: 280px; /* Slightly taller for better proportions */
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    overflow: hidden;
+    position: relative;
+}
+
+.player-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+}
+
+.player-card:hover .player-image img {
+    transform: scale(1.05);
+}
+
+.player-info {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.player-info h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.player-position {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.player-stats {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.player-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Enhanced View Profile Button */
+.player-profile-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.player-profile-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
+}
+
+/* Player Badge for Special Players */
+.player-featured {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Player Skills/Attributes */
+.player-attributes {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.attribute {
+    text-align: center;
+}
+
+.attribute-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.attribute-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+/* ===== PLAYER SPECIALTY STYLING ===== */
+.player-specialty {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 1rem 0;
+    display: inline-block;
+}
+
+/* =====  SEARCH BUTTON ===== */
+.simple-search-button {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.search-player-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-player-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 139, 87, 0.4);
+}
+
+
+    </style>
+</head>
+<body style="background-color: teal;">
+
+     <!-- ===== NAVIGATION - Uses external CSS ===== -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+         <img class="agent-logo" src="./IMAGES/logo.jpg" alt="">
+            <a href="index.html" class="logo">Sierra Leone Football Agency </a>
+            <ul class="nav-links">
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="players.html">PLAYERS</a></li>
+                <li><a href="matches.html">MATCHES</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== FEATURED PLAYERS - Enhanced Professional Version ===== -->
+<section class="section section-light">
+    <div class="container">
+        <h2 class="text-center">OUR PLAYERS</h2>
+        <div class="players-grid">
+            <!-- Player 1 - STEVEN CAULKER (Defender) -->
+            <div class="player-card">
+                <div class="player-featured">Experienced</div>
+                <div class="player-image">
+                    <img src="./IMAGES/P1.jpg" alt="Steven Caulker - Defender">
+                </div>
+                <div class="player-info">
+                    <h4>STEVEN CAULKER</h4>
+                    <div class="player-position">DEFENDER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 28</div>
+                        <div class="player-stat">📏 180cm</div>
+                        <div class="player-stat">🦵 Right Foot</div>
+                        <div class="player-stat">⚖️ 82kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">✈️ 88%</div>
+                            <div class="attribute-label">Aerial</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🛡️ 85%</div>
+                            <div class="attribute-label">Tackling</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">💪 90%</div>
+                            <div class="attribute-label">Strength</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Leadership & Aerial Duels</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 2 - MOHAMED N KAMARA (goalkeeper) -->
+            <div class="player-card">
+                <div class="player-featured">Flexible</div>
+                <div class="player-image">
+                    <img src="./IMAGES/P2.jpg" alt="Mohamed N Kamara - Midfielder">
+                </div>
+                <div class="player-info">
+                    <h4>MOHAMED N KAMARA</h4>
+                    <div class="player-position">GOALKEEEPER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 25</div>
+                        <div class="player-stat">📏 175cm</div>
+                        <div class="player-stat">🦵 Right Foot</div>
+                        <div class="player-stat">⚖️ 72kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 87%</div>
+                            <div class="attribute-label">Long-Passing</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">👀 89%</div>
+                            <div class="attribute-label">Flexibility</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">💪 95%</div>
+                            <div class="attribute-label">Stamina</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: diving & one-on-one</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 3 - AUGUSTINE KARGBO (Midfielder) -->
+            <div class="player-card">
+                <div class="player-featured">Young Talent</div>
+                <div class="player-image">
+                    <img src="./IMAGES/p9.webp" alt="Augustine Kargbo - Midfielder">
+                </div>
+                <div class="player-info">
+                    <h4>AUGUSTINE KARGBO</h4>
+                    <div class="player-position">MIDFIELDER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 21</div>
+                        <div class="player-stat">📏 185cm</div>
+                        <div class="player-stat">🦵 Both Feet</div>
+                        <div class="player-stat">⚖️ 76kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">⚡ 91%</div>
+                            <div class="attribute-label">Pace</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🤸 86%</div>
+                            <div class="attribute-label">Dribbling</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🎪 88%</div>
+                            <div class="attribute-label">Technique</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Dribbling & Long Shots</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 4 - MUSA NOAH KAMARA (Striker) -->
+            <div class="player-card">
+                <div class="player-featured">Goal Scorer</div>
+                <div class="player-image">
+                    <img src="./IMAGES/p7.webp" alt="Musa Noah Kamara - Striker">
+                </div>
+                <div class="player-info">
+                    <h4>MUSA NOAH KAMARA</h4>
+                    <div class="player-position">STRIKER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 22</div>
+                        <div class="player-stat">📏 180cm</div>
+                        <div class="player-stat">🦵 Left Foot</div>
+                        <div class="player-stat">⚖️ 74kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 92%</div>
+                            <div class="attribute-label">Finishing</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">⚡ 88%</div>
+                            <div class="attribute-label">Pace</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🧠 85%</div>
+                            <div class="attribute-label">Positioning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Clinical Finishing & Movement</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 5 - QUAMI QUEE (Midfielder) -->
+            <div class="player-card">
+                <div class="player-featured">Veteran</div>
+                <div class="player-image">
+                    <img src="./IMAGES/p8.jpg" alt="Quami Quee - Midfielder">
+                </div>
+                <div class="player-info">
+                    <h4>QUAMI QUEE</h4>
+                    <div class="player-position">MIDFIELDER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 37</div>
+                        <div class="player-stat">📏 175cm</div>
+                        <div class="player-stat">🦵 Right Foot</div>
+                        <div class="player-stat">⚖️ 70kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 90%</div>
+                            <div class="attribute-label">Experience</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🛡️ 82%</div>
+                            <div class="attribute-label">Tackling</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🧠 88%</div>
+                            <div class="attribute-label">Game IQ</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Leadership & Game Control</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 6 - JUMA BAH (Defender) -->
+            <div class="player-card">
+                <div class="player-featured">Rising Star</div>
+                <div class="player-image">
+                    <img src="./IMAGES/P4.jpg" alt="Juma Bah - Defender">
+                </div>
+                <div class="player-info">
+                    <h4>JUMA BAH</h4>
+                    <div class="player-position">DEFENDER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 18</div>
+                        <div class="player-stat">📏 185cm</div>
+                        <div class="player-stat">🦵 Right Foot</div>
+                        <div class="player-stat">⚖️ 78kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">⚡ 89%</div>
+                            <div class="attribute-label">Recovery</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 86%</div>
+                            <div class="attribute-label">Clearance</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">💪 84%</div>
+                            <div class="attribute-label">Strength</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Speed Recovery & Interceptions</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 7 - BUYA TURAY (Midfielder) -->
+            <div class="player-card">
+                <div class="player-featured">Box-to-Box</div>
+                <div class="player-image">
+                    <img src="./IMAGES/P5.jpg" alt="Buya Turay - Midfielder">
+                </div>
+                <div class="player-info">
+                    <h4>BUYA TURAY</h4>
+                    <div class="player-position">MIDFIELDER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 24</div>
+                        <div class="player-stat">📏 175cm</div>
+                        <div class="player-stat">🦵 Left Foot</div>
+                        <div class="player-stat">⚖️ 71kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">💪 87%</div>
+                            <div class="attribute-label">Stamina</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🛡️ 83%</div>
+                            <div class="attribute-label">Defense</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 85%</div>
+                            <div class="attribute-label">Work Rate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Box-to-Box & Ball Recovery</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+            
+            <!-- Player 8 - KAI KAMARA (Striker) -->
+            <div class="player-card">
+                <div class="player-featured">Legend</div>
+                <div class="player-image">
+                    <img src="./IMAGES/P6.jpg" alt="Kai Kamara - Striker">
+                </div>
+                <div class="player-info">
+                    <h4>KAI KAMARA</h4>
+                    <div class="player-position">STRIKER</div>
+                    
+                    <div class="player-stats">
+                        <div class="player-stat">⭐ Age: 38</div>
+                        <div class="player-stat">📏 185cm</div>
+                        <div class="player-stat">🦵 Right Foot</div>
+                        <div class="player-stat">⚖️ 80kg</div>
+                    </div>
+                    
+                    <div class="player-attributes">
+                        <div class="attribute">
+                            <div class="attribute-value">🎯 91%</div>
+                            <div class="attribute-label">Finishing</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">✈️ 86%</div>
+                            <div class="attribute-label">Heading</div>
+                        </div>
+                        <div class="attribute">
+                            <div class="attribute-value">🧠 90%</div>
+                            <div class="attribute-label">Experience</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-specialty">🎯 Specialty: Target Man & Headed Goals</div>
+                    <button class="btn player-profile-btn">View Full Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SIMPLE SEARCH BUTTON ===== -->
+<section class="section">
+    <div class="container">
+        <div class="simple-search-button">
+            <button class="search-player-btn">
+                SEARCH FOR PLAYER
+            </button>
+        </div>
+    </div>
+</section>
+       
+
+
+<!-- ===== FOOTER ===== -->
+    <footer class="footer">
+            <p>&copy; 2025 Football Agency Sierra Leone. All Rights Reserved.</p>
+        </div>
+    </footer>
+       
+</body>
+</html>

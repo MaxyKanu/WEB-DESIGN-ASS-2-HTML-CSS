@@ -1,0 +1,291 @@
+/* ===== CSS RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    /* Color Palette */
+    --primary-color: #2E8B57;
+    --secondary-color: #1E3A8A;
+    --accent-color: #DC2626;
+    --text-dark: #1F2937;
+    --text-light: #6B7280;
+    --background-light: #F3F4F6;
+    --white: #FFFFFF;
+    --border-color: #E5E7EB;
+    
+    /* Typography */
+    --font-primary: 'Arial', 'Helvetica', sans-serif;
+    --font-heading: 'Arial Black', 'Arial', sans-serif;
+    
+    /* Spacing */
+    --section-padding: 3rem 1rem;
+    --container-width: 1200px;
+    
+    /* Borders & Shadows */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BASE TYPOGRAPHY ===== */
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* ===== LAYOUT UTILITIES ===== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1E6B47;
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #152C6B;
+}
+
+/* ===== NAVIGATION STYLES ===== */
+.main-nav {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ===== SECTION STYLES ===== */
+
+.section {
+    padding: var(--section-padding);
+}
+
+.section-light {
+    background-color: var(--background-light);
+}
+
+/* ===== FOOTER STYLES ===== */
+.footer {
+    background-color: var(--text-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.footer-social{
+    text-align: center;
+    margin: 1.5rem 0;
+
+}
+
+.footer-social h4{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+.footer-social .social-links{
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-social .social-links :hover{
+    background: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.footer-links a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===== SAFE ENHANCEMENTS - TARGET YOUR EXISTING CLASSES ===== */
+
+/* 1. Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Enhanced Button Animations */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 3. Enhanced Card Hover Effects */
+.player-card, .team-card, .mv-card, .service-card {
+    transition: all 0.3s ease;
+}
+
+.player-card:hover, .team-card:hover, .mv-card:hover, .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Enhanced Form Interactions */
+.form-control {
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(46, 139, 87, 0.1);
+}
+
+/* 5. Enhanced Navigation Effects */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* 6. Professional Focus States */
+.btn:focus, .form-control:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 7. Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+.agent-logo {
+    width: 150px;
+    height: 65;
+    margin-right: 20px;
+    border-radius: 20px;
+    border: #DC2626;
+    border-color: green;
+}
