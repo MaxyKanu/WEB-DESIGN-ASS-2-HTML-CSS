@@ -134,6 +134,105 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
+        /* ===== TEAM SECTION STYLES ===== */
+
+/* Grid layout for team members */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Team card container */
+.team-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Hover effect */
+.team-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--primary-color);
+}
+
+/* Image container */
+.team-image {
+    width: 100%;
+    height: 220px;
+    background: var(--background-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Team image properties */
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* looks more realistic for staff images */
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Info container */
+.team-info {
+    padding: 1.5rem;
+}
+
+/* Name */
+.team-info h4 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Role label */
+.team-role {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+/* Description text */
+.team-info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}s
+
+        /* Footer social links */
+.footer-social .social-logo {
+    width: 28px; /* Bigger in footer too */
+    height: 28px;
+    filter: none; /* Visible by default */
+}
+
+.footer-social .social-link {
+    width: 60px; /* Bigger circle */
+    height: 60px;
+}
+
+.footer-social .social-link:hover .social-logo {
+    transform: scale(1.4);
+}
+
+/* for SVG */
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+        
     </style>
 </head>
 <body>
@@ -143,11 +242,11 @@
         <img class="agent-logo" src="./IMAGES/logo.jpg" alt="">   
             <a href="index.html" class="logo">Sierra Leone Football Agency</a>
             <ul class="nav-links">
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="players.html">PLAYERS</a></li>
-                <li><a href="matches.html">MATCHES</a></li>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="./home.html">HOME</a></li>
+                <li><a href="./players.html">PLAYERS</a></li>
+                <li><a href="./matches.html">MATCHES</a></li>
+                <li><a href="./about.html">ABOUT US</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
             </ul>
         </div>
     </nav>
@@ -263,6 +362,54 @@
                 <div class="text-center" style="margin-top: 3rem;">
                     <a href="#" class="btn btn-secondary">LEARN MORE ABOUT TEAMS</a>
                 </div>
+                <br>
+                <br>
+                <!-- ===== TEAM / STAFF SECTION ===== -->
+<section class="section">
+    <div class="container">
+        <h2 class="text-center">MEET OUR TEAM</h2>
+        <p class="text-center" style="max-width: 650px; margin: 0 auto 3rem;">
+            Our dedicated leadership team works tirelessly to develop young football talent, 
+            build strategic partnerships, and push Sierra Leone football forward.
+        </p>
+
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="./IMAGES/Director.jpeg" alt="Agency Director">
+                </div>
+                <div class="team-info">
+                    <h4>Mohamed Kallon</h4>
+                    <div class="team-role">Agency Director</div>
+                    <p>Oversees operations, partnerships, and international player transfers.</p>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="./IMAGES/scout.jpeg" alt="Head Scout">
+                </div>
+                <div class="team-info">
+                    <h4>Abu Kamara</h4>
+                    <div class="team-role">Head Scout</div>
+                    <p>Leads nationwide scouting missions to discover exceptional talent.</p>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="./IMAGES/technical coach.jpeg" alt="Technical Coach">
+                </div>
+                <div class="team-info">
+                    <h4>John Keister</h4>
+                    <div class="team-role">Technical Coach</div>
+                    <p>Trains players in tactical development and professional discipline.</p>
+                </div>
+            </div>
+
             </div>
         </section>
     </main>
